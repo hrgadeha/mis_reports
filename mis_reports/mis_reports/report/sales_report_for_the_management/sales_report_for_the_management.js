@@ -20,7 +20,7 @@ frappe.query_reports["Sales report for the Management"] = {
 	],
 	"onload": function() {
 		return  frappe.call({
-			method: "erpnext.hr.report.monthly_attendance_sheet.monthly_attendance_sheet.get_attendance_years",
+			method: "mis_reports.mis_reports.report.sales_report_for_the_management.sales_report_for_the_management.get_years",
 			callback: function(r) {
 				var year_filter = frappe.query_report.get_filter('year');
 				year_filter.df.options = r.message;

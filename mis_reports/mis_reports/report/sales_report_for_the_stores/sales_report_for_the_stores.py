@@ -27,3 +27,10 @@ def get_conditions(filters):
 
 	return conditions, filters
 
+@frappe.whitelist()
+def get_years():
+	year_list = frappe.db.sql_list("""select distinct YEAR(posting_date) from `tabSales Invoice` ORDER BY YEAR(posting_date) DESC""")
+	if not year_list:
+		year_list = [getdate().year]
+
+	return "\n".join(str(year) for year in year_list)
