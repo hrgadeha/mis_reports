@@ -37,5 +37,22 @@ def get_data():
 					"doctype": "Sales Invoice"
 				}
 			]
+		},
+		{
+			"label": _("Sales Reports"),
+			"items": [
+				{
+					"type": "report",
+					"is_query_report": True,
+					"name": "Sales Report for the stores",
+					"doctype": "Sales Invoice"
+				},
+				{
+					"type": "report",
+					"is_query_report": True,
+					"name": "Sales report for the Management",
+					"doctype": "Sales Invoice"
+				}
+			]
 		}
 	]
