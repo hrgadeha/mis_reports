@@ -23,14 +23,6 @@ def get_conditions(filters):
 	conditions = ""
 	filters["month"] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov",
 		"Dec"].index(filters.month) + 1
-	conditions += " and month(si.posting_date) = %(month)s and year(si.posting_date) = %(year)s"
+	conditions += " and month(si.posting_date) = %(month)s"
 
 	return conditions, filters
-
-@frappe.whitelist()
-def get_years():
-	year_list = frappe.db.sql_list("""select distinct YEAR(posting_date) from `tabSales Invoice` ORDER BY YEAR(posting_date) DESC""")
-	if not year_list:
-		year_list = [getdate().year]
-
-	return "\n".join(str(year) for year in year_list)
